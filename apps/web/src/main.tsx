@@ -9,6 +9,7 @@ import { store } from "./lib/store";
 import { ChargerFaultsPage } from "./pages/ChargerFaults";
 import { DataPage } from "./pages/Data";
 // import { FirmwarePage } from "./pages/Firmware";
+import { InstructionsPage } from "./pages/Instructions";
 import { NotFoundPage } from "./pages/NotFound";
 import { OverviewPage } from "./pages/Overview";
 import { RulesPage } from "./pages/Rules";
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
       // { path: "/stations", element: <StationsPage /> },
       { path: "/data", element: <DataPage /> },
       { path: "/rules", element: <RulesPage /> },
+      { path: "/instructions", element: <InstructionsPage /> },
       { path: "*", element: <NotFoundPage /> },
     ],
   },

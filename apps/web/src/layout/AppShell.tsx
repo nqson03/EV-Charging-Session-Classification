@@ -1,5 +1,5 @@
 // Cpu, MapPin: re-add when Firmware/Stations pages are re-enabled
-import { Database, LayoutGrid, ListChecks, Moon, PlugZap, Sun } from "lucide-react";
+import { BookOpen, Database, LayoutGrid, ListChecks, Moon, PlugZap, Sun } from "lucide-react";
 import { useState, type ComponentType } from "react";
 import { NavLink, Outlet, useLocation } from "react-router";
 import { useMetaQuery } from "../lib/api";
@@ -22,6 +22,9 @@ const ANALYTICS: NavItem[] = [
 const DATA: NavItem[] = [
   { to: "/data", label: "Data uploads", icon: Database },
   { to: "/rules", label: "Classification rules", icon: ListChecks },
+];
+const HELP: NavItem[] = [
+  { to: "/instructions", label: "Instructions", icon: BookOpen },
 ];
 
 function Mark() {
@@ -102,6 +105,7 @@ export function AppShell() {
         <nav className="flex-1 space-y-5 overflow-y-auto px-2 pt-3">
           <NavGroup title="Analytics" items={ANALYTICS} search={qs} />
           <NavGroup title="Data" items={DATA} search={qs} />
+          <NavGroup title="Help" items={HELP} search={qs} />
         </nav>
         <div className="space-y-2 border-t border-line px-4 py-3 text-xs">
           <div className="flex items-center justify-between text-ink-3">
@@ -122,7 +126,7 @@ export function AppShell() {
         <div className="flex items-center gap-3 border-b border-line bg-page px-4 lg:hidden">
           <Mark />
           <nav className="-mb-px flex gap-1 overflow-x-auto">
-            {[...ANALYTICS, ...DATA].map((i) => (
+            {[...ANALYTICS, ...DATA, ...HELP].map((i) => (
               <NavLink key={i.to} to={{ pathname: i.to, search: qs }} end={i.to === "/"}
                 className={({ isActive }) => cn("flex h-11 items-center border-b-2 px-2 text-xs whitespace-nowrap", isActive ? "border-ink font-medium text-ink" : "border-transparent text-ink-2")}>
                 {i.label}
