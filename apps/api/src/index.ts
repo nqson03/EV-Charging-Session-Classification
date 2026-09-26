@@ -278,9 +278,15 @@ app.get("/rules", async (c) => {
   const db = c.env.DB;
   const rules = await loadRules(db);
   const [observed, changes] = await db.batch([
+    // reason_dim is never pruned when uploads are deleted, so derive what is observed from the facts.
     db.prepare(
-      `SELECT reason, emsp_empty AS emspEmpty, category, label, code, step, first_seen AS firstSeen, last_seen AS lastSeen
-         FROM reason_dim ORDER BY category, label`,
+      `SELECT r.reason, r.emsp_empty AS emspEmpty, r.category, r.label, r.code, r.step,
+              MIN(f.date) AS firstSeen, MAX(f.date) AS lastSeen
+         FROM reason_dim r
+         JOIN fact_segment f ON f.reason_id = r.id
+         JOIN uploads u ON u.date = f.date AND u.status = 'complete'
+        GROUP BY r.id
+        ORDER BY r.category, r.label`,
     ),
     db.prepare("SELECT at, by, action, name FROM rule_changes ORDER BY id DESC LIMIT 30"),
   ]);
