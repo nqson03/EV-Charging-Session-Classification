@@ -5,3 +5,6 @@ export * from "./firmware";
 export * from "./dates";
 export * from "./ingest";
 export * from "./summary";
+export * from "./api";
+export * from "./upload";
+export * from "./report";
