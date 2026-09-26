@@ -20,7 +20,7 @@ export function Dialog({
         <D.Overlay className="fixed inset-0 z-40 bg-black/30 dark:bg-black/60" />
         <D.Content
           className={cn(
-            "fixed top-[12vh] left-1/2 z-50 w-[calc(100vw-32px)] -translate-x-1/2 rounded-md border border-line bg-panel shadow-[0_12px_40px_rgba(0,0,0,0.18)]",
+            "fixed top-1/2 left-1/2 z-50 max-h-[calc(100dvh-32px)] w-[calc(100vw-32px)] -translate-1/2 overflow-y-auto rounded-md border border-line bg-panel shadow-[0_12px_40px_rgba(0,0,0,0.18)]",
             width === "sm" ? "max-w-[420px]" : "max-w-[560px]",
           )}
         >

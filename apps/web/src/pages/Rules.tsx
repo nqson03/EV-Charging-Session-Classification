@@ -21,6 +21,9 @@ import {
 } from "../lib/api";
 import { dateTime, day } from "../lib/format";
 
+// Temporarily hidden along with the Firmware page.
+const SHOW_FIRMWARE = false;
+
 type Draft = { name: string; code: string; aliases: string; category: RuleCategory; isNew: boolean };
 
 function RuleDialog({ draft, onClose }: { draft: Draft | null; onClose: () => void }) {
@@ -348,7 +351,7 @@ export function RulesPage() {
             </div>
           </div>
 
-          <FirmwareSection />
+          {SHOW_FIRMWARE && <FirmwareSection />}
         </Page>
       )}
 

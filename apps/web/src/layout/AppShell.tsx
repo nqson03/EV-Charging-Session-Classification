@@ -1,4 +1,5 @@
-import { Cpu, Database, LayoutGrid, ListChecks, MapPin, Moon, PlugZap, Sun } from "lucide-react";
+// Cpu, MapPin: re-add when Firmware/Stations pages are re-enabled
+import { Database, LayoutGrid, ListChecks, Moon, PlugZap, Sun } from "lucide-react";
 import { useState, type ComponentType } from "react";
 import { NavLink, Outlet, useLocation } from "react-router";
 import { useMetaQuery } from "../lib/api";
@@ -14,8 +15,9 @@ interface NavItem {
 const ANALYTICS: NavItem[] = [
   { to: "/", label: "Overview", icon: LayoutGrid },
   { to: "/charger-faults", label: "Charger faults", icon: PlugZap },
-  { to: "/firmware", label: "Firmware & models", icon: Cpu },
-  { to: "/stations", label: "Stations", icon: MapPin },
+  // Temporarily hidden:
+  // { to: "/firmware", label: "Firmware & models", icon: Cpu },
+  // { to: "/stations", label: "Stations", icon: MapPin },
 ];
 const DATA: NavItem[] = [
   { to: "/data", label: "Data uploads", icon: Database },
@@ -128,7 +130,7 @@ export function AppShell() {
             ))}
           </nav>
         </div>
-        <main className="min-h-0 flex-1 overflow-y-auto">
+        <main className="relative min-h-0 flex-1 overflow-y-auto">
           <Outlet />
         </main>
       </div>

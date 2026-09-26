@@ -8,11 +8,11 @@ import { AppShell } from "./layout/AppShell";
 import { store } from "./lib/store";
 import { ChargerFaultsPage } from "./pages/ChargerFaults";
 import { DataPage } from "./pages/Data";
-import { FirmwarePage } from "./pages/Firmware";
+// import { FirmwarePage } from "./pages/Firmware";
 import { NotFoundPage } from "./pages/NotFound";
 import { OverviewPage } from "./pages/Overview";
 import { RulesPage } from "./pages/Rules";
-import { StationsPage } from "./pages/Stations";
+// import { StationsPage } from "./pages/Stations";
 
 const router = createBrowserRouter([
   {
@@ -20,8 +20,9 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <OverviewPage /> },
       { path: "/charger-faults", element: <ChargerFaultsPage /> },
-      { path: "/firmware", element: <FirmwarePage /> },
-      { path: "/stations", element: <StationsPage /> },
+      // Temporarily hidden:
+      // { path: "/firmware", element: <FirmwarePage /> },
+      // { path: "/stations", element: <StationsPage /> },
       { path: "/data", element: <DataPage /> },
       { path: "/rules", element: <RulesPage /> },
       { path: "*", element: <NotFoundPage /> },
